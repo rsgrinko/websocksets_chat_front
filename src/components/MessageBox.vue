@@ -1,6 +1,9 @@
 <template>
   <div>
-    <b-alert variant="success" show><b>{{ message.userName }}:</b> {{ message.text }}</b-alert>
+    <div v-for="message in messages" v-bind:key="message.text">
+      <b-alert v-if="!message.system" variant="success" show><b>{{ message.from }}[{{ message.userId }}]:</b> {{ message.text }}</b-alert>
+      <b-alert v-else variant="info" show>{{ message.text }}</b-alert>
+    </div>
   </div>
 </template>
 
@@ -8,7 +11,7 @@
 export default {
   name: 'MessageBox',
   props: {
-    message: Object
+    messages: Array
   }
 }
 </script>

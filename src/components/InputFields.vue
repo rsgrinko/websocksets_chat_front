@@ -10,7 +10,7 @@
         ></b-form-textarea>
       </b-col>
       <b-col class="p-0">
-        <b-button class="btnAllBlock" block variant="primary">Отправить</b-button>
+        <b-button class="btnAllBlock" block variant="primary" v-on:click="sendMessage">Отправить</b-button>
       </b-col>
     </b-row>
 
@@ -23,6 +23,9 @@ export default {
   name: "InputFields",
   props: {
     userList: Object
+  },
+  methods: {
+    sendMessage: sendMessage
   }
 }
 </script>
