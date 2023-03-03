@@ -25,7 +25,7 @@ export default {
     userList: Object
   },
   methods: {
-    sendMessage: sendMessage
+    //sendMessage: sendMessage
   }
 }
 </script>

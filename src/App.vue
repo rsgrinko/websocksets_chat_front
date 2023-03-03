@@ -42,13 +42,12 @@ export default {
       connection: null,
       messages: [],
       userList: [],
-      postTest: {text: "test", userName: "Roman"}
     }
   },
-  created: function() {
+  created: function () {
     this.connection = new WebSocket('wss://dev.it-stories.ru/wss?userName=Guest_anonimous')
     const vueObject = this;
-    this.connection.onmessage = function(event) {
+    this.connection.onmessage = function (event) {
       let data = JSON.parse(event.data);
 
       // Обработка пингов
@@ -103,10 +102,9 @@ export default {
           vueObject.messages = vueObject.messages.slice(1);
         }
       }
-      //
     }
 
-    this.connection.onopen = function() {
+    this.connection.onopen = function () {
       vueObject.messages.push(
           {system: true, from: "system", text: "Соединение установлено", userId: null}
       );
@@ -115,7 +113,7 @@ export default {
       }
     }
 
-    this.connection.onclose = function(event) {
+    this.connection.onclose = function (event) {
       let message;
       if (event.wasClean) {
         message = `Соединение закрыто чисто, код=${event.code} причина=${event.reason}`;
@@ -133,16 +131,11 @@ export default {
 
   },
   methods: {
-    sendMessage: function(message) {
-      console.log(message)
+    sendMessage: function (message) {
       this.connection.send(message);
     }
   },
 }
-
-setInterval(function () {
-
-}, 1000);
 </script>
 
 <style>
